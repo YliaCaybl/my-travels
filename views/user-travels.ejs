@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>Путешествия пользователя</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Главная</a></li>
+        <li><a href="/travels/new">Запись моего путешествия</a></li>
+        <li><a href="/travels/my-travels">Мои путешествия</a></li>
+        <li><a href="/auth/logout">Выход</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Путешествия пользователя</h1>
+    <% if (travels.length > 0) { %>
+      <ul>
+        <% travels.forEach(travel => { %>
+          <li>
+            <h2><%= travel.title %></h2>
+            <p><%= travel.description %></p>
+            <p><strong>Местоположение:</strong> <%= travel.location %></p>
+            <p><strong>Стоимость:</strong> <%= travel.cost %></p>
+            <p><strong>Места культурного наследия:</strong> <%= travel.heritage_sites %></p>
+            <p><strong>Места для посещения:</strong> <%= travel.places_to_visit %></p>
+            <p><strong>Оценки:</strong> <%= travel.ratings %></p>
+            <% if (travel.image_url) { %>
+              <img src="<%= travel.image_url %>" alt="<%= travel.title %>">
+            <% } %>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>У пользователя еще нет записей о путешествиях.</p>
+    <% } %>
+  </main>
+</body>
+</html>

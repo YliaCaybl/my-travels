@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>Другие пользователи</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Главная</a></li>
+        <li><a href="/travels/new">Запись моего путешествия</a></li>
+        <li><a href="/travels/my-travels">Мои путешествия</a></li>
+        <li><a href="/auth/logout">Выход</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Другие пользователи</h1>
+    <% if (users.length > 0) { %>
+      <ul>
+        <% users.forEach(user => { %>
+          <li>
+            <a href="/travels/user/<%= user.id %>"><%= user.username %></a>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>Нет других пользователей.</p>
+    <% } %>
+  </main>
+</body>
+</html>
